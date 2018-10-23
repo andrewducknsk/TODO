@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+.app-header {
+  background-color: #222;
+  height: 80px;
+  padding: 20px;
+  text-align: center;
+  color: white; }
+  .app-header__title {
+    font-size: 34px; }
+
+.app-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 1100px;
+  margin: 0 auto;
+  padding-top: 50px; }
+
+.add-task {
+  width: 370px;
+  max-height: 430px;
+  padding: 20px;
+  border: 2px solid #2daafa;
+  border-radius: 10px; }
+
+.task-title {
+  font-size: 18px; }
+  .task-title__field {
+    width: 100%;
+    height: 25px;
+    font-size: 14px;
+    border: 1px solid #2daafa;
+    border-radius: 5px; }
+
+.task-description {
+  font-size: 18px; }
+  .task-description__textarea {
+    width: 100%;
+    height: 25px;
+    font-size: 14px;
+    border: 1px solid #2daafa;
+    border-radius: 5px;
+    height: 100px;
+    resize: none; }
+
+.task-priority {
+  display: inline-block;
+  width: 45%;
+  margin-right: 37px;
+  font-size: 18px; }
+  .task-priority__field {
+    width: 100%;
+    height: 25px;
+    font-size: 14px;
+    border: 1px solid #2daafa;
+    border-radius: 5px; }
+
+.task-date {
+  display: inline-block;
+  width: 45%;
+  font-size: 18px; }
+  .task-date__field {
+    width: 100%;
+    height: 25px;
+    font-size: 14px;
+    border: 1px solid #2daafa;
+    border-radius: 5px; }
+    .task-date__field::-webkit-inner-spin-button, .task-date__field::-webkit-clear-button {
+      display: none; }
+
+.add-task__btn {
+  display: block;
+  width: 220px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 25px;
+  color: white;
+  background: #2daafa;
+  border: none;
+  border-radius: 10px; }
+
+.task-list {
+  width: 670px;
+  height: 788px; }
+
+.task-filter {
+  margin-bottom: 15px;
+  text-align: center; }
+  .task-filter__btn {
+    width: 45px;
+    height: 25px;
+    margin: 0 10px;
+    color: #fff;
+    background: #479eff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer; }
+
+.task {
+  position: relative;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 2px solid #222222;
+  border-radius: 10px; }
+  .task--overdue {
+    -webkit-box-shadow: inset 0 0 10px 3px red;
+            box-shadow: inset 0 0 10px 3px red; }
+  .task--completed {
+    -webkit-box-shadow: inset 0 0 10px 3px #32f601;
+            box-shadow: inset 0 0 10px 3px #32f601; }
+  .task__title {
+    display: inline-block;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #000; }
+  .task__edit--title {
+    display: block;
+    height: 35px;
+    width: 99.35%;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold; }
+  .task__edit--description {
+    width: 99.7%;
+    height: 135px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    resize: none; }
+  .task__edit--date::-webkit-inner-spin-button, .task__edit--date::-webkit-clear-button {
+    display: none; }
+  .task__edit--btn {
+    width: 70px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    background: -webkit-gradient(linear, right bottom, left top, from(#04f800), to(#ffef05));
+    background: linear-gradient(to top left, #04f800, #ffef05);
+    border: none;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 15px #9a9a9a;
+            box-shadow: 0 0 15px #9a9a9a;
+    cursor: pointer; }
+  .task__description {
+    margin: 0;
+    margin-bottom: 15px; }
+  .task__priority {
+    display: inline-block;
+    width: 10%;
+    height: 25px;
+    margin: 0;
+    margin-right: 25px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: bold;
+    border-radius: 10px; }
+    .task__priority--p1 {
+      color: #fff;
+      background: #28dc00; }
+    .task__priority--p2 {
+      background: #ffd800; }
+    .task__priority--p3 {
+      background: red;
+      color: #fff; }
+  .task__delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    font-size: 0;
+    background: none;
+    border: none;
+    cursor: pointer; }
+    .task__delete-btn:after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: 11.5px;
+      display: block;
+      width: 2px;
+      height: 31px;
+      background: #000;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
+    .task__delete-btn:before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: 11.5px;
+      display: block;
+      width: 2px;
+      height: 31px;
+      background: #000;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+  .task__date {
+    margin: 0;
+    margin-bottom: 10px; }
+  .task__completed-date {
+    margin: 0;
+    margin-bottom: 15px; }
+  .task__completed-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(75deg, #00ffdb, #13c5ff);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer; }
+
+.execution {
+  margin: 5px 0; }
+  .execution__title {
+    margin: 0; }
+  .execution__list {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    list-style: none; }
