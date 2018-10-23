@@ -20,12 +20,12 @@ class TaskList extends PureComponent {
         });
 
         this.getProps = setTimeout(() => {
-            this.chekOverdueTask = setInterval(this.checkOverdueTask(), 60000); // 1min
+            this.overdueTask = setInterval(this.checkOverdueTask, 60000); // 1min
         }, 1000); // 1s
     };
 
     componentWillUnmount() {
-        clearInterval(this.chekOverdueTask);
+        clearInterval(this.overdueTask);
         clearTimeout(this.getProps);
     }
 
@@ -39,8 +39,7 @@ class TaskList extends PureComponent {
         const dateNow = +`${year}${month}${date}`;
         const timeNow = +`${hours}${minutes}`;
 
-        const overdueTaskDate = task
-            .filter(task => task.isCompleted === false)
+        task.filter(task => task.isCompleted === false)
             .map(task => ({
                 date: parseInt(task.executionDate.replace(/[^\d+]/g, ``), 10),
                 time: task.executionTime !== `` ?
@@ -55,6 +54,7 @@ class TaskList extends PureComponent {
                     overdueTask(false, el.id)
                 }
             });
+
     };
 
     getDate = () => {
