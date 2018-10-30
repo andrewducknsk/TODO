@@ -1,89 +1,109 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import '../../css/main.min.css';
 import {editExecutionDate} from '../../actions/actions';
 
 class ExecutionDate extends PureComponent {
-    state = {
-        currentExecutionDateEdit: null,
-        executionDate: ``
-    };
+	state = {
+		currentExecutionDateEdit: null,
+		executionDate: ``,
+	};
 
-    elemPriority = e => e.target.parentElement.parentElement.parentElement.parentElement.querySelector(`.task__priority`).textContent.toLowerCase();
+	elemPriority = e =>
+		e.target.parentElement.parentElement.parentElement.parentElement
+			.querySelector(`.task__priority`)
+			.textContent.toLowerCase();
 
-    handleOnChangeExecutionDate = (e) => {
-        const {value} = e.target;
+	handleOnChangeExecutionDate = e => {
+		const {value} = e.target;
 
-        this.setState({
-            executionDate: value
-        })
-    };
+		this.setState({
+			executionDate: value,
+		});
+	};
 
-    handleOnClickExecutionDate = (e) => {
-        const {getDataId} = this.props;
+	handleOnClickExecutionDate = e => {
+		const {getDataId} = this.props;
 
-        this.setState({
-            currentExecutionDateEdit: getDataId(e)
-        })
-    };
+		this.setState({
+			currentExecutionDateEdit: getDataId(e),
+		});
+	};
 
-    handleOnBlurExecutionDate = (e) => {
-        const {editExecutionDate, getDataId, filtered} = this.props;
-        const {executionDate} = this.state;
+	handleOnBlurExecutionDate = e => {
+		const {editExecutionDate, getDataId, filtered} = this.props;
+		const {executionDate} = this.state;
 
-        editExecutionDate(executionDate, getDataId(e), this.elemPriority(e));
-        filtered();
+		editExecutionDate(executionDate, getDataId(e), this.elemPriority(e));
+		filtered();
 
-        this.setState({
-            currentExecutionDateEdit: null
-        });
-    };
+		this.setState({
+			currentExecutionDateEdit: null,
+		});
+	};
 
-    handleOnKeyDownExecutionDate = (e) => {
-        const keyEnter = 13;
-        const {editExecutionDate, getDataId, filtered} = this.props;
-        const {executionDate} = this.state;
+	handleOnKeyDownExecutionDate = e => {
+		const keyEnter = 13;
+		const {editExecutionDate, getDataId, filtered} = this.props;
+		const {executionDate} = this.state;
 
-        if (e.keyCode === keyEnter) {
-            editExecutionDate(executionDate, getDataId(e), this.elemPriority(e));
-            filtered();
+		if (e.keyCode === keyEnter) {
+			editExecutionDate(executionDate, getDataId(e), this.elemPriority(e));
+			filtered();
 
-            this.setState({
-                currentExecutionDateEdit: null
-            })
-        }
-    };
+			this.setState({
+				currentExecutionDateEdit: null,
+			});
+		}
+	};
 
-    render() {
-        const {currentExecutionDateEdit} = this.state;
-        const {id, text} = this.props;
+	render() {
+		const {currentExecutionDateEdit} = this.state;
+		const {id, text} = this.props;
 
-        return (
-            <li className='execution__item'>
-                {currentExecutionDateEdit === id ?
-                    <input className='task__edit--date'
-                           data-id={id}
-                           name='executionDate'
-                           onChange={this.handleOnChangeExecutionDate}
-                           onKeyDown={this.handleOnKeyDownExecutionDate}
-                           onBlur={this.handleOnBlurExecutionDate}
-                           autoFocus
-                           type="date"/> :
-                    <span className='execution__date'
-                          data-id={id}
-                          onClick={this.handleOnClickExecutionDate}>Date: {text}</span>
-                }
-            </li>
-        );
-    }
+		return (
+			<li className="execution__item">
+				{currentExecutionDateEdit === id ? (
+					<input
+						className="task__edit--date"
+						data-id={id}
+						name="executionDate"
+						onChange={this.handleOnChangeExecutionDate}
+						onKeyDown={this.handleOnKeyDownExecutionDate}
+						onBlur={this.handleOnBlurExecutionDate}
+						autoFocus
+						type="date"
+					/>
+				) : (
+					<span
+						className="execution__date"
+						data-id={id}
+						onClick={this.handleOnClickExecutionDate}
+					>
+						Date: {text}
+					</span>
+				)}
+			</li>
+		);
+	}
 }
 
-const mapStateToProps = state => ({
-
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
-    editExecutionDate
+	editExecutionDate,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExecutionDate);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ExecutionDate);
+
+ExecutionDate.propTypes = {
+	editExecutionDate: PropTypes.func,
+	filtered: PropTypes.func,
+	getDataId: PropTypes.func,
+	id: PropTypes.number,
+	text: PropTypes.string,
+};

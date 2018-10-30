@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import {TODO} from './createTask/createTask'
+import {TODO} from './createTask/createTask';
 
 export default combineReducers({
-    TODO,
+	TODO,
 });
 
 export const getTask = state => state.TODO.task;

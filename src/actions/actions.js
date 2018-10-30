@@ -1,71 +1,74 @@
 import {createActions} from 'redux-actions';
 
 const actionCreators = createActions({
-   APP: {
-       LOADING_STATE: {
-            LOAD: undefined
-       },
-       CREATE_TASK: {
-           ADD: undefined
-       },
-       EDIT_TASK: {
-           TITLE: [
-               title => ({title}),
-               (title, id, filterPriority) => ({id, filterPriority})
-           ],
-           PRIORITY: [
-               priority => ({priority}),
-               (priority, id, filterPriority) => ({id, filterPriority})
-           ],
-           DESCRIPTION: [
-               description => ({description}),
-               (description, id, filterPriority) => ({id, filterPriority})
-           ],
-           EXECUTION_DATE: [
-               executionDate => ({executionDate}),
-               (executionDate, id, filterPriority) => ({id, filterPriority})
-           ],
-           EXECUTION_TIME: [
-               executionTime => ({executionTime}),
-               (executionTime, id, filterPriority) => ({id, filterPriority})
-           ],
-       },
-       COMPLETED_TASK: {
-           COMPLETED: [
-               completed => ({completed}),
-               (completed, id, filterPriority) => ({id, filterPriority})
-           ],
-           COMPLETED_DATE: [
-               completedDate => ({completedDate}),
-               (completedDate, id, filterPriority) => ({id, filterPriority})
-           ],
-           COMPLETED_TIME: [
-               completedTime => ({completedTime}),
-               (completedTime, id, filterPriority) => ({id, filterPriority})
-           ]
-       },
-       OVERDUE_TASK: {
-         OVERDUE: [
-             overdue => ({overdue}),
-             (overdue, id) => ({id})
-         ]
-       },
-       DELETED_TASK: {
-           DELETE: [
-               deleteTask => ({deleteTask}),
-               (deleteTask, id, filterPriority) => ({id, filterPriority})
-           ]
-       },
-       FILTERED_TASK: {
-           ALL: undefined,
-           P1: undefined,
-           P2: undefined,
-           P3: undefined
-       }
-   }
+	APP: {
+		STATE: {
+			CHECK: undefined,
+			LOAD: undefined,
+			SET: undefined,
+		},
+		CREATE_TASK: {
+			ADD: undefined,
+		},
+		EDIT_TASK: {
+			TITLE: [
+				title => ({title}),
+				(title, id, filterPriority) => ({id, filterPriority}),
+			],
+			PRIORITY: [
+				priority => ({priority}),
+				(priority, id, filterPriority) => ({id, filterPriority}),
+			],
+			DESCRIPTION: [
+				description => ({description}),
+				(description, id, filterPriority) => ({id, filterPriority}),
+			],
+			EXECUTION_DATE: [
+				executionDate => ({executionDate}),
+				(executionDate, id, filterPriority) => ({id, filterPriority}),
+			],
+			EXECUTION_TIME: [
+				executionTime => ({executionTime}),
+				(executionTime, id, filterPriority) => ({id, filterPriority}),
+			],
+		},
+		COMPLETED_TASK: {
+			COMPLETED: [
+				completed => ({completed}),
+				(completed, id, filterPriority) => ({id, filterPriority}),
+			],
+			COMPLETED_DATE: [
+				completedDate => ({completedDate}),
+				(completedDate, id, filterPriority) => ({id, filterPriority}),
+			],
+			COMPLETED_TIME: [
+				completedTime => ({completedTime}),
+				(completedTime, id, filterPriority) => ({id, filterPriority}),
+			],
+		},
+		OVERDUE_TASK: {
+			OVERDUE: [overdue => ({overdue}), (overdue, id) => ({id})],
+		},
+		DELETED_TASK: {
+			DELETE: [
+				deleteTask => ({deleteTask}),
+				(deleteTask, id, filterPriority) => ({id, filterPriority}),
+			],
+		},
+		FILTERED_TASK: {
+			ALL: undefined,
+			P1: undefined,
+			P2: undefined,
+			P3: undefined,
+		},
+	},
 });
 
-export const loadingState = actionCreators.app.loadingState.load;
+export const setState = actionCreators.app.state.set;
+
+export const checkState = actionCreators.app.state.check;
+
+export const loadingState = actionCreators.app.state.load;
 
 export const createTask = actionCreators.app.createTask.add;
 
