@@ -36,44 +36,12 @@ class AddTask extends PureComponent {
         }
     }
 
-    handleOnChangeTitle = (e) => {
-      const {value} = e.target;
+    handleOnChange = (e) => {
+      const {value, name} = e.target;
 
       this.setState({
-          title: value
+          [name]: value
       })
-    };
-
-    handleOnChangeDescription = (e) => {
-        const {value} = e.target;
-
-        this.setState({
-            description: value
-        })
-    };
-
-    handelOnSelectPriority = (e) => {
-        const {value} = e.target;
-
-        this.setState({
-            priority: value
-        })
-    };
-
-    handleOnChangeDate = (e) => {
-        const {value} = e.target;
-
-        this.setState({
-            executionDate: value
-        })
-    };
-
-    handleOnChangeTime = (e) => {
-        const {value} = e.target;
-
-        this.setState({
-            executionTime: value
-        })
     };
 
     handleOnClickAddTask = (e) => {
@@ -107,18 +75,18 @@ class AddTask extends PureComponent {
                         <div className='task-title'>
                             <label className='task-title__label'>
                                 <p className='task-title__text'>Title task: </p>
-                                <input className='task-title__field' type="text" placeholder='Enter title' value={title} onChange={this.handleOnChangeTitle} required/>
+                                <input className='task-title__field' type="text" placeholder='Enter title' value={title}  name='title' onChange={this.handleOnChange} required/>
                             </label>
                         </div>
                         <div className='task-description'>
                             <label className='task-description__label'>
                                 <p className='task-description__text'>Description task: </p>
-                                <textarea className='task-description__textarea' placeholder='Enter description' value={description} onChange={this.handleOnChangeDescription} required/>
+                                <textarea className='task-description__textarea' placeholder='Enter description' value={description} name='description' onChange={this.handleOnChange} required/>
                             </label>
                         </div>
                         <div className='task-priority'>
                             <p className='task-priority__text'>Priority task: </p>
-                            <select className='task-priority__field' value={priority}  onChange={this.handelOnSelectPriority} required>
+                            <select className='task-priority__field' value={priority} name='priority' onChange={this.handleOnChange} required>
                                 <option value="" disabled></option>
                                 <option value="P1">P1</option>
                                 <option value="P2">P2</option>
@@ -128,8 +96,8 @@ class AddTask extends PureComponent {
                         <div className='task-date'>
                             <label className='task-date__label'>
                                 <p className='task-date__text'>Execution date: </p>
-                                <input className='task-date__field' value={executionDate} onChange={this.handleOnChangeDate} type="date"/>
-                                <input className='task-date__field' value={executionTime} onChange={this.handleOnChangeTime} type="time"/>
+                                <input className='task-date__field' value={executionDate} name='executionDate' onChange={this.handleOnChange} type="date"/>
+                                <input className='task-date__field' value={executionTime} name='executionTime' onChange={this.handleOnChange} type="time"/>
                             </label>
                         </div>
                         <button className='add-task__btn' onClick={this.handleOnClickAddTask}>Add Task</button>
