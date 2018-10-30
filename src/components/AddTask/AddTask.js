@@ -24,43 +24,11 @@ class AddTask extends PureComponent {
 		checkState();
 	}
 
-	handleOnChangeTitle = e => {
-		const {value} = e.target;
+	handleOnChange = e => {
+		const {value, name} = e.target;
 
 		this.setState({
-			title: value,
-		});
-	};
-
-	handleOnChangeDescription = e => {
-		const {value} = e.target;
-
-		this.setState({
-			description: value,
-		});
-	};
-
-	handelOnSelectPriority = e => {
-		const {value} = e.target;
-
-		this.setState({
-			priority: value,
-		});
-	};
-
-	handleOnChangeDate = e => {
-		const {value} = e.target;
-
-		this.setState({
-			executionDate: value,
-		});
-	};
-
-	handleOnChangeTime = e => {
-		const {value} = e.target;
-
-		this.setState({
-			executionTime: value,
+			[name]: value,
 		});
 	};
 
@@ -104,8 +72,9 @@ class AddTask extends PureComponent {
 									className="task-title__field"
 									type="text"
 									placeholder="Enter title"
+									name="title"
 									value={title}
-									onChange={this.handleOnChangeTitle}
+									onChange={this.handleOnChange}
 									required
 								/>
 							</label>
@@ -116,8 +85,9 @@ class AddTask extends PureComponent {
 								<textarea
 									className="task-description__textarea"
 									placeholder="Enter description"
+									name="description"
 									value={description}
-									onChange={this.handleOnChangeDescription}
+									onChange={this.handleOnChange}
 									required
 								/>
 							</label>
@@ -126,8 +96,9 @@ class AddTask extends PureComponent {
 							<p className="task-priority__text">Priority task: </p>
 							<select
 								className="task-priority__field"
+								name="priority"
 								value={priority}
-								onChange={this.handelOnSelectPriority}
+								onChange={this.handleOnChange}
 								required
 							>
 								<option value="" disabled />
@@ -141,14 +112,16 @@ class AddTask extends PureComponent {
 								<p className="task-date__text">Execution date: </p>
 								<input
 									className="task-date__field"
+									name="executionDate"
 									value={executionDate}
-									onChange={this.handleOnChangeDate}
+									onChange={this.handleOnChange}
 									type="date"
 								/>
 								<input
 									className="task-date__field"
+									name="executionTime"
 									value={executionTime}
-									onChange={this.handleOnChangeTime}
+									onChange={this.handleOnChange}
 									type="time"
 								/>
 							</label>
