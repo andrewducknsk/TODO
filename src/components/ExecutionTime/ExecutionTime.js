@@ -7,7 +7,7 @@ import {editExecutionTime} from '../../actions/actions';
 class ExecutionTime extends PureComponent {
 	state = {
 		currentExecutionTimeEdit: null,
-		executionTime: ``,
+		executionTime: this.props.executionTime,
 	};
 
 	elemPriority = e =>
@@ -59,7 +59,7 @@ class ExecutionTime extends PureComponent {
 	};
 
 	render() {
-		const {currentExecutionTimeEdit} = this.state;
+		const {currentExecutionTimeEdit, executionTime} = this.state;
 		const {id, text} = this.props;
 
 		return (
@@ -68,6 +68,7 @@ class ExecutionTime extends PureComponent {
 					<input
 						className="task__edit--time"
 						name="executionTime"
+						value={executionTime}
 						onChange={this.handleOnChangeExecutionTime}
 						onKeyDown={this.handleOnKeyDownExecutionTime}
 						onBlur={this.handleOnBlurExecutionTime}

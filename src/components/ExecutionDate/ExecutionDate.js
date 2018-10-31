@@ -7,7 +7,7 @@ import {editExecutionDate} from '../../actions/actions';
 class ExecutionDate extends PureComponent {
 	state = {
 		currentExecutionDateEdit: null,
-		executionDate: ``,
+		executionDate: this.props.executionDate,
 	};
 
 	elemPriority = e =>
@@ -59,7 +59,7 @@ class ExecutionDate extends PureComponent {
 	};
 
 	render() {
-		const {currentExecutionDateEdit} = this.state;
+		const {currentExecutionDateEdit, executionDate} = this.state;
 		const {id, text} = this.props;
 
 		return (
@@ -68,6 +68,7 @@ class ExecutionDate extends PureComponent {
 					<input
 						className="task__edit--date"
 						name="executionDate"
+						value={executionDate}
 						onChange={this.handleOnChangeExecutionDate}
 						onKeyDown={this.handleOnKeyDownExecutionDate}
 						onBlur={this.handleOnBlurExecutionDate}

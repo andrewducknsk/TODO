@@ -7,7 +7,7 @@ import {editDescription} from '../../actions/actions';
 class Description extends PureComponent {
 	state = {
 		currentDescriptionEdit: null,
-		description: ``,
+		description: this.props.text,
 	};
 
 	handleOnChangeDescription = e => {
@@ -55,7 +55,7 @@ class Description extends PureComponent {
 
 	render() {
 		const {id, text} = this.props;
-		const {currentDescriptionEdit} = this.state;
+		const {currentDescriptionEdit, description} = this.state;
 
 		return (
 			<React.Fragment>
@@ -63,6 +63,7 @@ class Description extends PureComponent {
 					<textarea
 						className="task__edit--description"
 						name="description"
+						value={description}
 						onChange={this.handleOnChangeDescription}
 						onKeyDown={this.handleOnKeyDownDescription}
 						onBlur={this.handleOnBlurDescription}

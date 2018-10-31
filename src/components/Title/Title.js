@@ -7,8 +7,7 @@ import {editTitle} from '../../actions/actions';
 class Title extends PureComponent {
 	state = {
 		currentTitleEdit: null,
-		title: ``,
-		currentTitle: this.props.text,
+		title: this.props.text,
 	};
 
 	handleOnChangeTitle = e => {
@@ -16,7 +15,6 @@ class Title extends PureComponent {
 
 		this.setState({
 			title: value,
-			currentTitle: value,
 		});
 	};
 
@@ -57,7 +55,7 @@ class Title extends PureComponent {
 
 	render() {
 		const {id, text} = this.props;
-		const {currentTitleEdit, currentTitle} = this.state;
+		const {currentTitleEdit, title} = this.state;
 
 		return (
 			<React.Fragment>
@@ -65,7 +63,7 @@ class Title extends PureComponent {
 					<input
 						className="task__edit--title"
 						name="title"
-						value={currentTitle}
+						value={title}
 						onChange={this.handleOnChangeTitle}
 						onKeyDown={this.handleOnKeyDownTitle}
 						onBlur={this.handleOnBlurTitle}
