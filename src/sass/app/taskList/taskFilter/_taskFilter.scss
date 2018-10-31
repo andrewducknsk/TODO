@@ -1,0 +1,14 @@
+.task-filter {
+	margin-bottom: 15px;
+	text-align: center;
+	&__btn {
+		width: 45px;
+		height: 25px;
+		margin: 0 10px;
+		color: #fff;
+		background: #479eff;
+		border: none;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+}

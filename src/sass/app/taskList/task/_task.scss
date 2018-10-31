@@ -1,0 +1,144 @@
+.task {
+	position: relative;
+	margin-bottom: 25px;
+	padding: 10px;
+	border: 2px solid #222222;
+	border-radius: 10px;
+
+	&--overdue {
+		box-shadow: inset 0 0 10px 3px red;
+	}
+
+	&--completed {
+		box-shadow: inset 0 0 10px 3px #32f601;
+	}
+
+	&__title {
+		display: inline-block;
+		width: 100%;
+		margin-top: 15px;
+		margin-bottom: 8px;
+		padding-bottom: 7px;
+		border-bottom: 1px solid #000;
+	}
+
+	&__edit {
+		&--title {
+			display: block;
+			height: 35px;
+			width: 99.35%;
+			margin-top: 15px;
+			margin-bottom: 8px;
+			padding: 0;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		&--description {
+			width: 99.7%;
+			height: 135px;
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			resize: none;
+		}
+		&--date::-webkit-inner-spin-button,
+		&--date::-webkit-clear-button {
+			display: none;
+		}
+		&--btn {
+			width: 70px;
+			height: 40px;
+			font-size: 16px;
+			font-weight: bold;
+			color: #000;
+			background: linear-gradient(to top left, #04f800, #ffef05);
+			border: none;
+			border-radius: 30px;
+			box-shadow: 0 0 15px #9a9a9a;
+			cursor: pointer;
+		}
+	}
+	&__description {
+		margin: 0;
+		margin-bottom: 15px;
+	}
+	&__priority {
+		display: inline-block;
+		width: 10%;
+		height: 25px;
+		margin: 0;
+		margin-right: 25px;
+		text-align: center;
+		font-size: 14px;
+		line-height: 25px;
+		font-weight: bold;
+		border-radius: 10px;
+		&--p1 {
+			color: #fff;
+			background: #28dc00;
+		}
+		&--p2 {
+			background: #ffd800;
+		}
+		&--p3 {
+			background: red;
+			color: #fff;
+		}
+	}
+	&__delete-btn {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		padding: 0;
+		font-size: 0;
+		background: none;
+		border: none;
+		cursor: pointer;
+		&:after {
+			@include delete-btn;
+		}
+		&:before {
+			@include delete-btn;
+			transform: rotate(-45deg);
+		}
+	}
+	&__execution {
+		margin: 5px 0;
+		&-title {
+			margin: 0;
+		}
+		&-list {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			padding-left: 15px;
+			list-style: none;
+		}
+	}
+	&__date {
+		margin: 0;
+		margin-bottom: 10px;
+	}
+	&__completed-date {
+		display: inline-block;
+		width: 75%;
+		margin: 0;
+		margin-bottom: 15px;
+	}
+	&__completed-btn {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 150px;
+		height: 40px;
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff;
+		background: linear-gradient(75deg, #00ffdb, #13c5ff);
+		border: none;
+		border-radius: 25px;
+		cursor: pointer;
+	}
+}

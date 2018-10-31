@@ -97,13 +97,6 @@ class TaskList extends PureComponent {
 		};
 	};
 
-	getDataId = e => +e.target.getAttribute(`data-id`);
-
-	getElemPriority = e =>
-		e.target.parentElement.parentElement
-			.querySelector(`.task__priority`)
-			.textContent.toLowerCase();
-
 	filteredOnChangeTask = () => {
 		const {filter, filteredP1, filteredP2, filteredP3} = this.props;
 		const filterFlag = {
@@ -146,47 +139,40 @@ class TaskList extends PureComponent {
 							el.isOverdue ? `task--overdue` : ``
 						}`}
 						key={el.id}
-						data-id={el.id}
 					>
 						<Priority
 							id={el.id}
 							text={el.priority}
-							getDataId={this.getDataId}
 							filtered={this.filteredOnChangeTask}
 						/>
 						<DeletingTask
 							id={el.id}
-							getDataId={this.getDataId}
+							priority={el.priority}
 							filtered={this.filteredOnChangeTask}
-							getElemPriority={this.getElemPriority}
 						/>
 						<Title
 							id={el.id}
 							text={el.title}
-							getDataId={this.getDataId}
+							priority={el.priority}
 							filtered={this.filteredOnChangeTask}
-							getElemPriority={this.getElemPriority}
 						/>
 						<Description
 							id={el.id}
 							text={el.description}
-							getDataId={this.getDataId}
+							priority={el.priority}
 							filtered={this.filteredOnChangeTask}
-							getElemPriority={this.getElemPriority}
 						/>
-						<div className="execution">
-							<p className="execution__title">Execution:</p>
-							<ul className="execution__list">
+						<div className="task__execution">
+							<p className="task__execution-title">Execution:</p>
+							<ul className="task__execution-list">
 								<ExecutionDate
 									id={el.id}
 									text={el.executionDate}
-									getDataId={this.getDataId}
 									filtered={this.filteredOnChangeTask}
 								/>
 								<ExecutionTime
 									id={el.id}
 									text={el.executionTime}
-									getDataId={this.getDataId}
 									filtered={this.filteredOnChangeTask}
 								/>
 							</ul>
@@ -195,7 +181,6 @@ class TaskList extends PureComponent {
 							id={el.id}
 							date={el.completedDate}
 							time={el.completedTime}
-							getDataId={this.getDataId}
 							getDate={this.getDate}
 							filtered={this.filteredOnChangeTask}
 						/>

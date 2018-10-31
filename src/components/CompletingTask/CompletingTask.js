@@ -12,7 +12,7 @@ import {getTask} from '../../reducers';
 class CompletingTask extends PureComponent {
 	handleOnClickCompleted = e => {
 		const {
-			getDataId,
+			id,
 			getDate,
 			completedTask,
 			completedTaskDate,
@@ -22,39 +22,36 @@ class CompletingTask extends PureComponent {
 		} = this.props;
 		const {year, month, date, hours, minutes} = getDate();
 
-		const indexTask = task.findIndex(x => x.id === getDataId(e));
+		const indexTask = task.findIndex(x => x.id === id);
 
 		if (task[indexTask].isCompleted) {
-			completedTask(false, getDataId(e));
-			completedTaskDate(``, getDataId(e));
-			completedTaskTime(``, getDataId(e));
+			completedTask(false, id);
+			completedTaskDate(``, id);
+			completedTaskTime(``, id);
 			filtered();
 		} else {
-			completedTask(true, getDataId(e));
-			completedTaskDate(`${year}-${month}-${date}`, getDataId(e));
-			completedTaskTime(`- ${hours}:${minutes}`, getDataId(e));
+			completedTask(true, id);
+			completedTaskDate(`${year}-${month}-${date}`, id);
+			completedTaskTime(`- ${hours}:${minutes}`, id);
 			filtered();
 		}
 	};
 
 	render() {
-		const {id, date, time} = this.props;
+		const {date, time} = this.props;
 
 		return (
-			<div>
+			<React.Fragment>
 				<p className="task__completed-date">
-					<span>
-						Date completed: {date} {time}
-					</span>
+					Date completed: {date} {time}
 				</p>
 				<button
 					className="task__completed-btn"
-					data-id={id}
 					onClick={this.handleOnClickCompleted}
 				>
 					Completed
 				</button>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -79,9 +76,8 @@ CompletingTask.propTypes = {
 	completedTaskDate: PropTypes.func,
 	completedTaskTime: PropTypes.func,
 	data: PropTypes.string,
-	getDataId: PropTypes.func,
 	getDate: PropTypes.func,
-	id: PropTypes.number,
+	id: PropTypes.number.isRequired,
 	task: PropTypes.array,
 	time: PropTypes.string,
 	filtered: PropTypes.func,

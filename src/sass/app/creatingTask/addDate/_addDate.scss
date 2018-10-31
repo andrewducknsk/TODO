@@ -1,0 +1,14 @@
+.add-date {
+	display: inline-block;
+	width: 45%;
+	&__text {
+		font-size: 18px;
+	}
+	&__field {
+		@include add-task__field;
+		&::-webkit-inner-spin-button,
+		&::-webkit-clear-button {
+			display: none;
+		}
+	}
+}

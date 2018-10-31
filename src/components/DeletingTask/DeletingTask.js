@@ -6,25 +6,19 @@ import {deleteTask} from '../../actions/actions';
 
 class DeletingTask extends PureComponent {
 	handleOnClickDelete = e => {
-		const {deleteTask, getDataId, getElemPriority, filtered} = this.props;
+		const {deleteTask, id, priority, filtered} = this.props;
 
-		deleteTask(true, getDataId(e), getElemPriority(e));
+		deleteTask(true, id, priority);
 		filtered();
 	};
 
 	render() {
-		const {id} = this.props;
-
 		return (
-			<div>
-				<button
-					className="task__delete-btn"
-					data-id={id}
-					onClick={this.handleOnClickDelete}
-				>
+			<React.Fragment>
+				<button className="task__delete-btn" onClick={this.handleOnClickDelete}>
 					Delete
 				</button>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -43,7 +37,6 @@ export default connect(
 DeletingTask.propTypes = {
 	deleteTask: PropTypes.func.isRequired,
 	filtered: PropTypes.func,
-	getDataId: PropTypes.func.isRequired,
-	getElemPriority: PropTypes.func,
+	priority: PropTypes.string.isRequired,
 	id: PropTypes.number.isRequired,
 };

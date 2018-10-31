@@ -1,17 +1,20 @@
 import React, {PureComponent} from 'react';
 import '../../css/main.min.css';
-import AddTask from '../AddTask/AddTask';
 import TaskList from '../TaskList/TaskList';
+import CreatingTask from '../CreatingTask/CreatingTask';
 
+const Header = props => (
+	<header className="header">
+		<h1 className="header__title">{props.children}</h1>
+	</header>
+);
 class App extends PureComponent {
 	render() {
 		return (
 			<div className="app">
-				<header className="app-header">
-					<h1 className="app-header__title">Todo List</h1>
-				</header>
-				<main className="app-main">
-					<AddTask />
+				<Header>Todo List</Header>
+				<main className="main">
+					<CreatingTask />
 					<TaskList />
 				</main>
 			</div>

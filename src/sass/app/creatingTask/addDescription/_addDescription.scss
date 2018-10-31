@@ -1,0 +1,10 @@
+.add-description {
+	&__text {
+		font-size: 18px;
+	}
+	&__textarea {
+		@include add-task__field;
+		height: 100px;
+		resize: none;
+	}
+}

@@ -8,6 +8,7 @@ class Title extends PureComponent {
 	state = {
 		currentTitleEdit: null,
 		title: ``,
+		currentTitle: this.props.text,
 	};
 
 	handleOnChangeTitle = e => {
@@ -15,22 +16,23 @@ class Title extends PureComponent {
 
 		this.setState({
 			title: value,
+			currentTitle: value,
 		});
 	};
 
 	handleOnClickTitle = e => {
-		const {getDataId} = this.props;
+		const {id} = this.props;
 
 		this.setState({
-			currentTitleEdit: getDataId(e),
+			currentTitleEdit: id,
 		});
 	};
 
 	handleOnBlurTitle = e => {
-		const {editTitle, getDataId, filtered, getElemPriority} = this.props;
+		const {editTitle, id, filtered, priority} = this.props;
 		const {title} = this.state;
 
-		editTitle(title, getDataId(e), getElemPriority(e));
+		editTitle(title, id, priority);
 		filtered();
 
 		this.setState({
@@ -40,11 +42,11 @@ class Title extends PureComponent {
 
 	handleOnKeyDownTitle = e => {
 		const keyEnter = 13;
-		const {editTitle, getDataId, filtered, getElemPriority} = this.props;
+		const {editTitle, id, filtered, priority} = this.props;
 		const {title} = this.state;
 
 		if (e.keyCode === keyEnter) {
-			editTitle(title, getDataId(e), getElemPriority(e));
+			editTitle(title, id, priority);
 			filtered();
 
 			this.setState({
@@ -55,32 +57,27 @@ class Title extends PureComponent {
 
 	render() {
 		const {id, text} = this.props;
-		const {currentTitleEdit} = this.state;
+		const {currentTitleEdit, currentTitle} = this.state;
 
 		return (
-			<div>
+			<React.Fragment>
 				{currentTitleEdit === id ? (
 					<input
 						className="task__edit--title"
-						data-id={id}
 						name="title"
+						value={currentTitle}
 						onChange={this.handleOnChangeTitle}
 						onKeyDown={this.handleOnKeyDownTitle}
 						onBlur={this.handleOnBlurTitle}
-						// value={task[it].title}
 						autoFocus
 						type="text"
 					/>
 				) : (
-					<h1
-						className="task__title"
-						data-id={id}
-						onClick={this.handleOnClickTitle}
-					>
+					<h1 className="task__title" onClick={this.handleOnClickTitle}>
 						{text}
 					</h1>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -99,8 +96,7 @@ export default connect(
 Title.propTypes = {
 	editTitle: PropTypes.func,
 	filtered: PropTypes.func,
-	getDataId: PropTypes.func,
-	getElemPriority: PropTypes.func,
-	id: PropTypes.number,
+	priority: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
 	text: PropTypes.string,
 };

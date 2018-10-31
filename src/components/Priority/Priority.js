@@ -8,14 +8,11 @@ const EditPriority = props => {
 	return (
 		<select
 			name="task-priority"
-			data-id={props.data}
 			onChange={props.onChange}
 			onSelect={props.onSelected}
 			onBlur={props.onBlur}
 			autoFocus
-			/*defaultValue=''*/
 		>
-			{/*<option value="" disabled></option>*/}
 			<option value="P1">P1</option>
 			<option value="P2">P2</option>
 			<option value="P3">P3</option>
@@ -38,10 +35,10 @@ class Priority extends PureComponent {
 	};
 
 	handleOnClickPriority = e => {
-		const {getDataId} = this.props;
+		const {id} = this.props;
 
 		this.setState({
-			currentPriorityEdit: getDataId(e),
+			currentPriorityEdit: id,
 		});
 	};
 
@@ -64,23 +61,21 @@ class Priority extends PureComponent {
 		const {currentPriorityEdit} = this.state;
 
 		return (
-			<div>
+			<React.Fragment>
 				{currentPriorityEdit === id ? (
 					<EditPriority
-						data={id}
 						onChange={this.handleOnChangePriority}
 						onBlur={this.handleOnBlurPriority}
 					/>
 				) : (
 					<p
 						className={`task__priority task__priority--${text.toLowerCase()}`}
-						data-id={id}
 						onClick={this.handleOnClickPriority}
 					>
 						{text}
 					</p>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -99,7 +94,6 @@ export default connect(
 Priority.propTypes = {
 	editPriority: PropTypes.func,
 	filtered: PropTypes.func,
-	getDataId: PropTypes.func,
-	id: PropTypes.number,
+	id: PropTypes.number.isRequired,
 	text: PropTypes.string,
 };

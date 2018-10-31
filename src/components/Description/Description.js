@@ -19,18 +19,18 @@ class Description extends PureComponent {
 	};
 
 	handleOnClickDescription = e => {
-		const {getDataId} = this.props;
+		const {id} = this.props;
 
 		this.setState({
-			currentDescriptionEdit: getDataId(e),
+			currentDescriptionEdit: id,
 		});
 	};
 
 	handleOnBlurDescription = e => {
-		const {editDescription, getDataId, filtered, getElemPriority} = this.props;
+		const {editDescription, id, filtered, priority} = this.props;
 		const {description} = this.state;
 
-		editDescription(description, getDataId(e), getElemPriority(e));
+		editDescription(description, id, priority);
 		filtered();
 
 		this.setState({
@@ -40,11 +40,11 @@ class Description extends PureComponent {
 
 	handleOnKeyDownDescription = e => {
 		const keyEnter = 13;
-		const {editDescription, getDataId, filtered, getElemPriority} = this.props;
+		const {editDescription, id, filtered, priority} = this.props;
 		const {description} = this.state;
 
 		if (e.keyCode === keyEnter) {
-			editDescription(description, getDataId(e), getElemPriority(e));
+			editDescription(description, id, priority);
 			filtered();
 
 			this.setState({
@@ -58,28 +58,25 @@ class Description extends PureComponent {
 		const {currentDescriptionEdit} = this.state;
 
 		return (
-			<div>
+			<React.Fragment>
 				{currentDescriptionEdit === id ? (
 					<textarea
 						className="task__edit--description"
-						data-id={id}
 						name="description"
 						onChange={this.handleOnChangeDescription}
 						onKeyDown={this.handleOnKeyDownDescription}
 						onBlur={this.handleOnBlurDescription}
-						// value={this.state.description}
 						autoFocus
 					/>
 				) : (
 					<p
 						className="task__description"
-						data-id={id}
 						onClick={this.handleOnClickDescription}
 					>
 						{text}
 					</p>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -98,8 +95,7 @@ export default connect(
 Description.propTypes = {
 	editDescription: PropTypes.func,
 	filtered: PropTypes.func,
-	getDataId: PropTypes.func,
-	getElemPriority: PropTypes.func,
-	id: PropTypes.number,
+	priority: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
 	text: PropTypes.string,
 };

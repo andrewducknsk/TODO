@@ -3,16 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif; }
 
-.app-header {
+.header {
   background-color: #222;
   height: 80px;
   padding: 20px;
   text-align: center;
   color: white; }
-  .app-header__title {
+  .header__title {
     font-size: 34px; }
 
-.app-main {
+.main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,85 +23,74 @@ body {
   margin: 0 auto;
   padding-top: 50px; }
 
-.add-task {
+.creating-task {
   width: 370px;
   max-height: 430px;
   padding: 20px;
   border: 2px solid #2daafa;
   border-radius: 10px; }
+  .creating-task__btn {
+    display: block;
+    width: 220px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 25px;
+    color: white;
+    background: #2daafa;
+    border: none;
+    border-radius: 10px; }
 
-.task-title {
+.add-title__text {
   font-size: 18px; }
-  .task-title__field {
-    width: 100%;
-    height: 25px;
-    font-size: 14px;
-    border: 1px solid #2daafa;
-    border-radius: 5px; }
 
-.task-description {
+.add-title__field {
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  border: 1px solid #2daafa;
+  border-radius: 5px; }
+
+.add-description__text {
   font-size: 18px; }
-  .task-description__textarea {
-    width: 100%;
-    height: 25px;
-    font-size: 14px;
-    border: 1px solid #2daafa;
-    border-radius: 5px;
-    height: 100px;
-    resize: none; }
 
-.task-priority {
+.add-description__textarea {
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  border: 1px solid #2daafa;
+  border-radius: 5px;
+  height: 100px;
+  resize: none; }
+
+.add-priority {
   display: inline-block;
   width: 45%;
-  margin-right: 37px;
-  font-size: 18px; }
-  .task-priority__field {
+  margin-right: 37px; }
+  .add-priority__text {
+    font-size: 18px; }
+  .add-priority__field {
     width: 100%;
     height: 25px;
     font-size: 14px;
     border: 1px solid #2daafa;
     border-radius: 5px; }
 
-.task-date {
+.add-date {
   display: inline-block;
-  width: 45%;
-  font-size: 18px; }
-  .task-date__field {
+  width: 45%; }
+  .add-date__text {
+    font-size: 18px; }
+  .add-date__field {
     width: 100%;
     height: 25px;
     font-size: 14px;
     border: 1px solid #2daafa;
     border-radius: 5px; }
-    .task-date__field::-webkit-inner-spin-button, .task-date__field::-webkit-clear-button {
+    .add-date__field::-webkit-inner-spin-button, .add-date__field::-webkit-clear-button {
       display: none; }
 
-.add-task__btn {
-  display: block;
-  width: 220px;
-  height: 40px;
-  margin: 0 auto;
-  margin-top: 25px;
-  color: white;
-  background: #2daafa;
-  border: none;
-  border-radius: 10px; }
-
 .task-list {
-  width: 670px;
-  height: 788px; }
-
-.task-filter {
-  margin-bottom: 15px;
-  text-align: center; }
-  .task-filter__btn {
-    width: 45px;
-    height: 25px;
-    margin: 0 10px;
-    color: #fff;
-    background: #479eff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer; }
+  width: 670px; }
 
 .task {
   position: relative;
@@ -211,10 +200,21 @@ body {
               transform: rotate(45deg);
       -webkit-transform: rotate(-45deg);
               transform: rotate(-45deg); }
+  .task__execution {
+    margin: 5px 0; }
+    .task__execution-title {
+      margin: 0; }
+    .task__execution-list {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      padding-left: 15px;
+      list-style: none; }
   .task__date {
     margin: 0;
     margin-bottom: 10px; }
   .task__completed-date {
+    display: inline-block;
+    width: 75%;
     margin: 0;
     margin-bottom: 15px; }
   .task__completed-btn {
@@ -231,12 +231,15 @@ body {
     border-radius: 25px;
     cursor: pointer; }
 
-.execution {
-  margin: 5px 0; }
-  .execution__title {
-    margin: 0; }
-  .execution__list {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    list-style: none; }
+.task-filter {
+  margin-bottom: 15px;
+  text-align: center; }
+  .task-filter__btn {
+    width: 45px;
+    height: 25px;
+    margin: 0 10px;
+    color: #fff;
+    background: #479eff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer; }

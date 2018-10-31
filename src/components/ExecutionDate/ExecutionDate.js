@@ -24,18 +24,18 @@ class ExecutionDate extends PureComponent {
 	};
 
 	handleOnClickExecutionDate = e => {
-		const {getDataId} = this.props;
+		const {id} = this.props;
 
 		this.setState({
-			currentExecutionDateEdit: getDataId(e),
+			currentExecutionDateEdit: id,
 		});
 	};
 
 	handleOnBlurExecutionDate = e => {
-		const {editExecutionDate, getDataId, filtered} = this.props;
+		const {editExecutionDate, id, filtered} = this.props;
 		const {executionDate} = this.state;
 
-		editExecutionDate(executionDate, getDataId(e), this.elemPriority(e));
+		editExecutionDate(executionDate, id, this.elemPriority(e));
 		filtered();
 
 		this.setState({
@@ -45,11 +45,11 @@ class ExecutionDate extends PureComponent {
 
 	handleOnKeyDownExecutionDate = e => {
 		const keyEnter = 13;
-		const {editExecutionDate, getDataId, filtered} = this.props;
+		const {editExecutionDate, id, filtered} = this.props;
 		const {executionDate} = this.state;
 
 		if (e.keyCode === keyEnter) {
-			editExecutionDate(executionDate, getDataId(e), this.elemPriority(e));
+			editExecutionDate(executionDate, id, this.elemPriority(e));
 			filtered();
 
 			this.setState({
@@ -67,7 +67,6 @@ class ExecutionDate extends PureComponent {
 				{currentExecutionDateEdit === id ? (
 					<input
 						className="task__edit--date"
-						data-id={id}
 						name="executionDate"
 						onChange={this.handleOnChangeExecutionDate}
 						onKeyDown={this.handleOnKeyDownExecutionDate}
@@ -78,7 +77,6 @@ class ExecutionDate extends PureComponent {
 				) : (
 					<span
 						className="execution__date"
-						data-id={id}
 						onClick={this.handleOnClickExecutionDate}
 					>
 						Date: {text}
@@ -103,7 +101,6 @@ export default connect(
 ExecutionDate.propTypes = {
 	editExecutionDate: PropTypes.func,
 	filtered: PropTypes.func,
-	getDataId: PropTypes.func,
-	id: PropTypes.number,
+	id: PropTypes.number.isRequired,
 	text: PropTypes.string,
 };

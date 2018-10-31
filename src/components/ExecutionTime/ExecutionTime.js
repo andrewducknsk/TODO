@@ -24,18 +24,18 @@ class ExecutionTime extends PureComponent {
 	};
 
 	handleOnClickExecutionTime = e => {
-		const {getDataId} = this.props;
+		const {id} = this.props;
 
 		this.setState({
-			currentExecutionTimeEdit: getDataId(e),
+			currentExecutionTimeEdit: id,
 		});
 	};
 
 	handleOnBlurExecutionTime = e => {
-		const {editExecutionTime, getDataId, filtered} = this.props;
+		const {editExecutionTime, id, filtered} = this.props;
 		const {executionTime} = this.state;
 
-		editExecutionTime(executionTime, getDataId(e), this.elemPriority);
+		editExecutionTime(executionTime, id, this.elemPriority);
 		filtered();
 
 		this.setState({
@@ -45,11 +45,11 @@ class ExecutionTime extends PureComponent {
 
 	handleOnKeyDownExecutionTime = e => {
 		const keyEnter = 13;
-		const {editExecutionTime, getDataId, filtered} = this.props;
+		const {editExecutionTime, id, filtered} = this.props;
 		const {executionTime} = this.state;
 
 		if (e.keyCode === keyEnter) {
-			editExecutionTime(executionTime, getDataId(e), this.elemPriority);
+			editExecutionTime(executionTime, id, this.elemPriority);
 			filtered();
 
 			this.setState({
@@ -67,7 +67,6 @@ class ExecutionTime extends PureComponent {
 				{currentExecutionTimeEdit === id ? (
 					<input
 						className="task__edit--time"
-						data-id={id}
 						name="executionTime"
 						onChange={this.handleOnChangeExecutionTime}
 						onKeyDown={this.handleOnKeyDownExecutionTime}
@@ -78,7 +77,6 @@ class ExecutionTime extends PureComponent {
 				) : (
 					<span
 						className="execution__date"
-						data-id={id}
 						onClick={this.handleOnClickExecutionTime}
 					>
 						Time: {text}
@@ -103,7 +101,6 @@ export default connect(
 ExecutionTime.propTypes = {
 	editExecutionTime: PropTypes.func,
 	filtered: PropTypes.func,
-	getDataId: PropTypes.func,
-	id: PropTypes.number,
+	id: PropTypes.number.isRequired,
 	text: PropTypes.string,
 };

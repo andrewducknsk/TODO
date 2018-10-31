@@ -1,2 +1,18 @@
 @import '../sass/_mixin.scss';
+@import '../sass/_scaffolding.scss';
+
 @import '../sass/app/_app.scss';
+
+@import '../sass/app/header/_header.scss';
+
+@import '../sass/app/main/_main.scss';
+
+@import '../sass/app/creatingTask/_creatingTask.scss';
+@import '../sass/app/creatingTask/addTitle/_addTitle.scss';
+@import '../sass/app/creatingTask/addDescription/_addDescription.scss';
+@import '../sass/app/creatingTask/addPriority/_addPriority.scss';
+@import '../sass/app/creatingTask/addDate/_addDate.scss';
+
+@import '../sass/app/taskList/_taskList.scss';
+@import '../sass/app/taskList/task/_task.scss';
+@import '../sass/app/taskList/taskFilter/_taskFilter.scss';
