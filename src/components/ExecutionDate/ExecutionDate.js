@@ -10,11 +10,6 @@ class ExecutionDate extends PureComponent {
 		executionDate: this.props.executionDate,
 	};
 
-	elemPriority = e =>
-		e.target.parentElement.parentElement.parentElement.parentElement
-			.querySelector(`.task__priority`)
-			.textContent.toLowerCase();
-
 	handleOnChangeExecutionDate = e => {
 		const {value} = e.target;
 
@@ -32,10 +27,10 @@ class ExecutionDate extends PureComponent {
 	};
 
 	handleOnBlurExecutionDate = e => {
-		const {editExecutionDate, id, filtered} = this.props;
+		const {editExecutionDate, id, filtered, priority} = this.props;
 		const {executionDate} = this.state;
 
-		editExecutionDate(executionDate, id, this.elemPriority(e));
+		editExecutionDate(executionDate, id, priority);
 		filtered();
 
 		this.setState({
@@ -45,11 +40,11 @@ class ExecutionDate extends PureComponent {
 
 	handleOnKeyDownExecutionDate = e => {
 		const keyEnter = 13;
-		const {editExecutionDate, id, filtered} = this.props;
+		const {editExecutionDate, id, filtered, priority} = this.props;
 		const {executionDate} = this.state;
 
 		if (e.keyCode === keyEnter) {
-			editExecutionDate(executionDate, id, this.elemPriority(e));
+			editExecutionDate(executionDate, id, priority);
 			filtered();
 
 			this.setState({

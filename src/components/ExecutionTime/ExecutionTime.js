@@ -10,11 +10,6 @@ class ExecutionTime extends PureComponent {
 		executionTime: this.props.executionTime,
 	};
 
-	elemPriority = e =>
-		e.target.parentElement.parentElement.parentElement.parentElement
-			.querySelector(`.task__priority`)
-			.textContent.toLowerCase();
-
 	handleOnChangeExecutionTime = e => {
 		const {value} = e.target;
 
@@ -32,10 +27,10 @@ class ExecutionTime extends PureComponent {
 	};
 
 	handleOnBlurExecutionTime = e => {
-		const {editExecutionTime, id, filtered} = this.props;
+		const {editExecutionTime, id, filtered, priority} = this.props;
 		const {executionTime} = this.state;
 
-		editExecutionTime(executionTime, id, this.elemPriority);
+		editExecutionTime(executionTime, id, priority);
 		filtered();
 
 		this.setState({
@@ -45,11 +40,11 @@ class ExecutionTime extends PureComponent {
 
 	handleOnKeyDownExecutionTime = e => {
 		const keyEnter = 13;
-		const {editExecutionTime, id, filtered} = this.props;
+		const {editExecutionTime, id, filtered, priority} = this.props;
 		const {executionTime} = this.state;
 
 		if (e.keyCode === keyEnter) {
-			editExecutionTime(executionTime, id, this.elemPriority);
+			editExecutionTime(executionTime, id, priority);
 			filtered();
 
 			this.setState({
