@@ -144,6 +144,7 @@ export const TODO = handleActions(
 		}),
 		[filteredAll]: (state, action) => ({
 			...state,
+			filteredTask: [],
 			filter: action.payload,
 		}),
 		[filteredP1]: (state, action) => ({

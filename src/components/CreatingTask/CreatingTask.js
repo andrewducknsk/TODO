@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {createTask, checkState} from '../../actions/actions';
 import '../../css/main.min.css';
 
+const Title = props => <h3 className={props.class}>{props.children}</h3>;
+
 class CreatingTask extends PureComponent {
 	state = {
 		id: Date.now(),
@@ -66,7 +68,7 @@ class CreatingTask extends PureComponent {
 				<form className="" method="#">
 					<div className="add-title">
 						<label className="add-title__label">
-							<p className="add-title__text">Title task: </p>
+							<Title class="add-title__text">Title task: </Title>
 							<input
 								className="add-title__field"
 								type="text"
@@ -80,7 +82,7 @@ class CreatingTask extends PureComponent {
 					</div>
 					<div className="add-description">
 						<label className="add-description__label">
-							<p className="add-description__text">Description task: </p>
+							<Title class="add-description__text">Description task: </Title>
 							<textarea
 								className="add-description__textarea"
 								placeholder="Enter description"
@@ -93,7 +95,7 @@ class CreatingTask extends PureComponent {
 					</div>
 					<div className="add-priority">
 						<label className="add-priority__label">
-							<p className="add-priority__text">Priority task: </p>
+							<Title class="add-priority__text">Priority task: </Title>
 							<select
 								className="add-priority__field"
 								name="priority"
@@ -110,7 +112,7 @@ class CreatingTask extends PureComponent {
 					</div>
 					<div className="add-date">
 						<label className="add-date__label">
-							<p className="add-date__text">Execution date: </p>
+							<Title class="add-description__text">Execution date: </Title>
 							<input
 								className="add-date__field"
 								name="executionDate"

@@ -50,16 +50,27 @@ class TaskList extends PureComponent {
 		task
 			.filter(task => task.isCompleted === false)
 			.map(task => ({
-				date: parseInt(task.executionDate.replace(/[^\d+]/g, ``), 10),
+				date:
+					task.executionDate !== `` && task.executionDate !== undefined
+						? parseInt(task.executionDate.replace(/[^\d+]/g, ``), 10)
+						: ``,
 				time:
-					task.executionTime !== ``
+					task.executionTime !== `` && task.executionTime !== undefined
 						? parseInt(task.executionTime.replace(/[^\d+]/g, ``), 10)
 						: ``,
 				id: task.id,
 			}))
 			.forEach(el => {
-				if (el.date <= dateNow && !el.time !== `` && el.time < timeNow) {
+				if (el.date === `` && el.time === ``) {
+					overdueTask(false, el.id);
+				} else if (el.date < dateNow) {
 					overdueTask(true, el.id);
+				} else if (el.date === dateNow) {
+					if (el.time > timeNow || el.time === ``) {
+						overdueTask(false, el.id);
+					} else {
+						overdueTask(true, el.id);
+					}
 				} else {
 					overdueTask(false, el.id);
 				}

@@ -8,16 +8,17 @@ const Header = props => (
 		<h1 className="header__title">{props.children}</h1>
 	</header>
 );
+
 class App extends PureComponent {
 	render() {
 		return (
-			<div className="app">
+			<React.Fragment>
 				<Header>Todo List</Header>
 				<main className="main">
 					<CreatingTask />
 					<TaskList />
 				</main>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
